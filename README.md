@@ -38,23 +38,33 @@ SECTION I -- Client and EKS Cluster setup
       ** find EC2 of cloud9
  - install kubernetes tools: kubectl
    1. Create the default ~/.kube directory for storing kubectl configuration 
-      * mkdir -p ~/.kube
+      ```
+	  mkdir -p ~/.kube
+	  ```
    2. Install kubectl
-      * sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/kubectl
-      * sudo chmod +x /usr/local/bin/kubectl
-      * kubectl version
+      ```
+	  sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/kubectl
+      sudo chmod +x /usr/local/bin/kubectl
+      kubectl version
+	  ```
    3. Install AWS IAM Authenticator
-      * go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
-      * sudo mv ~/go/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
+      ```
+	  go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
+      sudo mv ~/go/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
+	  ```
    4. Install JQ and envsubst
-      * sudo yum -y install jq gettext
+      ```
+      sudo yum -y install jq gettext
+	  ```
    5. Verify the binaries are in the path and executable
   
+  ```
   for command in kubectl aws-iam-authenticator jq envsubst
   do
     which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
   done
-
+  ```
+  
   - UPDATE IAM SETTINGS FOR YOUR WORKSPACE
    Cloud9 normally manages IAM credentials dynamically. This isn’t currently compatible with the aws-iam-authenticator plugin, 
    so we will disable it and rely on the IAM role instead.
@@ -70,6 +80,7 @@ SECTION I -- Client and EKS Cluster setup
  
    We should configure our aws cli with our current region as default:
  
+   ```
    export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
    export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
@@ -80,37 +91,49 @@ SECTION I -- Client and EKS Cluster setup
 
    aws configure set default.region ${AWS_REGION}
    aws configure get default.region
-
+  ```
+   
    - Validate the IAM role
-   * aws sts get-caller-identity
+   ```
+   aws sts get-caller-identity
+   ```
    * Output should contain the following
     eksworkshop-admin
 
  - CREATE AN SSH KEY
   1. generate SSH Key in Cloud9
+   ```
    ssh-keygen
-
+   ```
   2. Upload the public key to your EC2 region:
+   ```
    aws ec2 import-key-pair --key-name "eksworkshop" --public-key-material file://~/.ssh/id_rsa.pub
-
+   ```
+   
   - download eksctl
-   * curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-   * sudo mv -v /tmp/eksctl /usr/local/bin
-   * eksctl version
-
+   ```
+   curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+   sudo mv -v /tmp/eksctl /usr/local/bin
+   eksctl version
+   ```
 
 
 2. Launch EKSCTL
 
   - create the cluster (takes 15 mins)
-  * eksctl create cluster --region ${AWS_REGION} --name eks-workshop-eksctl --nodes=3
-
+  ```
+  eksctl create cluster --region ${AWS_REGION} --name eks-workshop-eksctl --nodes=3
+  ```
+  
   - verify
-  * eksctl get clusters
-
+  ```
+  eksctl get clusters
+  ```
+  
   -scale
-  * eksctl scale nodegroup --name eks-workshop-eksctl  --nodes=4 --region=${AWS_REGION}
-
+  ```
+  eksctl scale nodegroup --name eks-workshop-eksctl  --nodes=4 --region=${AWS_REGION}
+  ```
 
 
 
@@ -119,6 +142,7 @@ kubectl get nodes -o wide
 
 Export the Worker Role Name for use throughout the workshop
 
+```
 INSTANCE_PROFILE_NAME=$(aws iam list-instance-profiles | jq -r '.InstanceProfiles[].InstanceProfileName' | grep nodegroup)
 
 INSTANCE_PROFILE_ARN=$(aws iam get-instance-profile --instance-profile-name $INSTANCE_PROFILE_NAME | jq -r '.InstanceProfile.Arn')
@@ -131,3 +155,4 @@ echo "export INSTANCE_PROFILE_ARN=${INSTANCE_PROFILE_ARN}" >> ~/.bash_profile
 cat ~/.bash_profile
 
 kubectl version
+```
