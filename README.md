@@ -28,7 +28,6 @@ At the moment, Cloud9 is only available in the following regions:
 # SECTION I -- Client and EKS Cluster setup
 
 ## 1. AWS Environment setup
- - show the demo app that will be deployed to AWS
  - AWS user/roles setup 
  - Cloud9 setup
    * Why Cloud9?, it has aws cli, golang, git 
@@ -38,32 +37,32 @@ At the moment, Cloud9 is only available in the following regions:
       ** find EC2 of cloud9
  - install kubernetes tools: kubectl
    1. Create the default ~/.kube directory for storing kubectl configuration 
-      ```
+      ```sh
 	  mkdir -p ~/.kube
 	  ```
    2. Install kubectl
-      ```
+      ```sh
 	  sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/kubectl
       sudo chmod +x /usr/local/bin/kubectl
       kubectl version
 	  ```
    3. Install AWS IAM Authenticator
-      ```
+      ```sh
 	  go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
       sudo mv ~/go/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
 	  ```
    4. Install JQ and envsubst
-      ```
+      ```sh
       sudo yum -y install jq gettext
 	  ```
    5. Verify the binaries are in the path and executable
   
-  ```
-  for command in kubectl aws-iam-authenticator jq envsubst
-  do
-    which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
-  done
-  ```
+    ```sh
+    for command in kubectl aws-iam-authenticator jq envsubst
+    do
+      which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
+    done
+    ```
   
   - UPDATE IAM SETTINGS FOR YOUR WORKSPACE
    Cloud9 normally manages IAM credentials dynamically. This isn’t currently compatible with the aws-iam-authenticator plugin, 
@@ -76,11 +75,13 @@ At the moment, Cloud9 is only available in the following regions:
 
   - Configure AWS credentials in terminal
    To ensure temporary credentials aren’t already in place we will also remove any existing credentials file:
+   ```sh
    rm -vf ${HOME}/.aws/credentials
+   ```
  
    We should configure our aws cli with our current region as default:
  
-   ```
+   ```sh
    export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
    export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
@@ -94,7 +95,7 @@ At the moment, Cloud9 is only available in the following regions:
   ```
    
    - Validate the IAM role
-   ```
+   ```sh
    aws sts get-caller-identity
    ```
    * Output should contain the following
@@ -102,16 +103,16 @@ At the moment, Cloud9 is only available in the following regions:
 
  - CREATE AN SSH KEY
   1. generate SSH Key in Cloud9
-   ```
+   ```sh
    ssh-keygen
    ```
   2. Upload the public key to your EC2 region:
-   ```
+   ```sh
    aws ec2 import-key-pair --key-name "eksworkshop" --public-key-material file://~/.ssh/id_rsa.pub
    ```
    
   - download eksctl
-   ```
+   ```sh
    curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
    sudo mv -v /tmp/eksctl /usr/local/bin
    eksctl version
@@ -121,17 +122,17 @@ At the moment, Cloud9 is only available in the following regions:
 ## 2. Launch EKSCTL
 
   - create the cluster (takes 15 mins)
-  ```
+  ```sh
   eksctl create cluster --region ${AWS_REGION} --name eks-workshop-eksctl --nodes=3
   ```
   
   - verify
-  ```
+  ```sh
   eksctl get clusters
   ```
   
   - scale
-  ```
+  ```sh
   eksctl scale nodegroup --name eks-workshop-eksctl  --nodes=4 --region=${AWS_REGION}
   ```
 
