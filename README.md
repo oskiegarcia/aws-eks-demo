@@ -139,13 +139,13 @@ At the moment, Cloud9 is only available in the following regions:
 
 ### Test the Cluster
 - List the worker nodes
-```
+```sh
 kubectl get nodes -o wide
 ```
 
 - Export the Worker Role Name for use throughout the workshop
 
-```
+```sh
 INSTANCE_PROFILE_NAME=$(aws iam list-instance-profiles | jq -r '.InstanceProfiles[].InstanceProfileName' | grep nodegroup)
 
 INSTANCE_PROFILE_ARN=$(aws iam get-instance-profile --instance-profile-name $INSTANCE_PROFILE_NAME | jq -r '.InstanceProfile.Arn')
@@ -153,10 +153,14 @@ ROLE_NAME=$(aws iam get-instance-profile --instance-profile-name $INSTANCE_PROFI
 
 echo "export ROLE_NAME=${ROLE_NAME}" >> ~/.bash_profile
 echo "export INSTANCE_PROFILE_ARN=${INSTANCE_PROFILE_ARN}" >> ~/.bash_profile
+```
 
 - list content of  .bash_profile
+```sh
 cat ~/.bash_profile
+```
 
 - Get version of client and server
+```sh
 kubectl version
 ```
