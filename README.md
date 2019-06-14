@@ -107,7 +107,10 @@ At the moment, Cloud9 is only available in the following regions:
    * Output should contain the following
     eksworkshop-admin
 
- - CREATE AN SSH KEY
+ - Create an SSH key
+ 
+  This key will be used on the worker node instances to allow ssh access if necessary.
+ 
   1. generate SSH Key in Cloud9
    ```sh
    ssh-keygen
