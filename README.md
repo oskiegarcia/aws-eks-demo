@@ -44,9 +44,14 @@ At the moment, Cloud9 is only available in the following regions:
       ```sh
 	  sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/kubectl
       sudo chmod +x /usr/local/bin/kubectl
+ 	  ```
+
+      - Get version of client and server
+      ```sh
       kubectl version
-	  ```
-   3. Install AWS IAM Authenticator
+      ```
+
+	  3. Install AWS IAM Authenticator
       ```sh
 	  go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
       sudo mv ~/go/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
@@ -115,9 +120,12 @@ At the moment, Cloud9 is only available in the following regions:
    ```sh
    curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
    sudo mv -v /tmp/eksctl /usr/local/bin
-   eksctl version
    ```
 
+   - Get version eksctl
+    ```sh
+     eksctl version
+    ```
 
 ## 2. Launch EKSCTL
 
