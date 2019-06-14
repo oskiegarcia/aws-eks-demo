@@ -25,9 +25,9 @@ At the moment, Cloud9 is only available in the following regions:
 - US East (Ohio)
 - US West (Oregon)
 
-#SECTION I -- Client and EKS Cluster setup
+# SECTION I -- Client and EKS Cluster setup
 
-##1. AWS Environment setup
+## 1. AWS Environment setup
  - show the demo app that will be deployed to AWS
  - AWS user/roles setup 
  - Cloud9 setup
@@ -118,7 +118,7 @@ At the moment, Cloud9 is only available in the following regions:
    ```
 
 
-##2. Launch EKSCTL
+## 2. Launch EKSCTL
 
   - create the cluster (takes 15 mins)
   ```
@@ -137,7 +137,7 @@ At the moment, Cloud9 is only available in the following regions:
 
 
 
-###TEST THE CLUSTER
+### TEST THE CLUSTER
 ```
 kubectl get nodes -o wide
 ```
