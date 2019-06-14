@@ -2,28 +2,28 @@
 
 Note: 
 At the moment, EKS is only available in the following regions:
-EU (Stockholm)
-Asia Pacific (Mumbai)
-EU (Paris)
-EU (London)
-EU (Ireland)
-Asia Pacific (Seoul)
-Asia Pacific (Tokyo)
-Asia Pacific (Singapore)
-Asia Pacific (Sydney)
-EU (Frankfurt)
-US East (N. Virginia)
-US East (Ohio)
-US West (Oregon)
+- EU (Stockholm)
+- Asia Pacific (Mumbai)
+- EU (Paris)
+- EU (London)
+- EU (Ireland)
+- Asia Pacific (Seoul)
+- Asia Pacific (Tokyo)
+- Asia Pacific (Singapore)
+- Asia Pacific (Sydney)
+- EU (Frankfurt)
+- US East (N. Virginia)
+- US East (Ohio)
+- US West (Oregon)
 
 At the moment, Cloud9 is only available in the following regions:
-EU (Ireland)
-Asia Pacific (Singapore)
-EU (Frankfurt)
-Asia Pacific (Tokyo)
-US East (N. Virginia)
-US East (Ohio)
-US West (Oregon)
+- EU (Ireland)
+- Asia Pacific (Singapore)
+- EU (Frankfurt)
+- Asia Pacific (Tokyo)
+- US East (N. Virginia)
+- US East (Ohio)
+- US West (Oregon)
 
 SECTION I -- Client and EKS Cluster setup
 
