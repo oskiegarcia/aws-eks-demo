@@ -51,7 +51,7 @@ At the moment, Cloud9 is only available in the following regions:
       kubectl version
       ```
 
-	  3. Install AWS IAM Authenticator
+   3. Install AWS IAM Authenticator
       ```sh
 	  go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
       sudo mv ~/go/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
@@ -61,21 +61,20 @@ At the moment, Cloud9 is only available in the following regions:
       sudo yum -y install jq gettext
 	  ```
    5. Verify the binaries are in the path and executable
+       ```sh
+       for command in kubectl aws-iam-authenticator jq envsubst
+        do
+          which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
+        done
+       ```
   
-    ```sh
-    for command in kubectl aws-iam-authenticator jq envsubst
-    do
-      which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
-    done
-    ```
-  
-  - UPDATE IAM SETTINGS FOR YOUR WORKSPACE
-   Cloud9 normally manages IAM credentials dynamically. This isn’t currently compatible with the aws-iam-authenticator plugin, 
-   so we will disable it and rely on the IAM role instead.
-   1. Return to your workspace and click the sprocket, or launch a new tab to open the Preferences tab
-   2. Select AWS SETTINGS
-   3. Turn off AWS managed temporary credentials
-   4. Close the Preferences tab
+  - Update IAM settings for your workspace 
+   * Cloud9 normally manages IAM credentials dynamically. This isn’t currently compatible with the aws-iam-authenticator plugin, 
+   * so we will disable it and rely on the IAM role instead.
+    1. Return to your workspace and click the sprocket, or launch a new tab to open the Preferences tab
+    2. Select AWS SETTINGS
+    3. Turn off AWS managed temporary credentials
+    4. Close the Preferences tab
 
 
   - Configure AWS credentials in terminal
