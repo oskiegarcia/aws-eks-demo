@@ -69,8 +69,10 @@ At the moment, Cloud9 is only available in the following regions:
        ```
   
   - Update IAM settings for your workspace 
-   * Cloud9 normally manages IAM credentials dynamically. This isn’t currently compatible with the aws-iam-authenticator plugin, 
-   * so we will disable it and rely on the IAM role instead.
+   
+   Cloud9 normally manages IAM credentials dynamically. This isn’t currently compatible with the aws-iam-authenticator plugin, 
+   so we will disable it and rely on the IAM role instead.
+   
     1. Return to your workspace and click the sprocket, or launch a new tab to open the Preferences tab
     2. Select AWS SETTINGS
     3. Turn off AWS managed temporary credentials
