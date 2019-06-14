@@ -130,19 +130,20 @@ At the moment, Cloud9 is only available in the following regions:
   eksctl get clusters
   ```
   
-  -scale
+  - scale
   ```
   eksctl scale nodegroup --name eks-workshop-eksctl  --nodes=4 --region=${AWS_REGION}
   ```
 
 
 
-### TEST THE CLUSTER
+### Test the Cluster
+- List the worker nodes
 ```
 kubectl get nodes -o wide
 ```
 
-Export the Worker Role Name for use throughout the workshop
+- Export the Worker Role Name for use throughout the workshop
 
 ```
 INSTANCE_PROFILE_NAME=$(aws iam list-instance-profiles | jq -r '.InstanceProfiles[].InstanceProfileName' | grep nodegroup)
@@ -153,8 +154,9 @@ ROLE_NAME=$(aws iam get-instance-profile --instance-profile-name $INSTANCE_PROFI
 echo "export ROLE_NAME=${ROLE_NAME}" >> ~/.bash_profile
 echo "export INSTANCE_PROFILE_ARN=${INSTANCE_PROFILE_ARN}" >> ~/.bash_profile
 
-
+- list content of  .bash_profile
 cat ~/.bash_profile
 
+- Get version of client and server
 kubectl version
 ```
