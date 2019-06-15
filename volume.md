@@ -1,6 +1,13 @@
 
 # Pesistent volume in EBS with gp2 storage class
 
+prerequisite:
+```sh
+cd ~/environment
+git clone https://github.com/oskiegarcia/aws-eks-demo.git
+cd aws-eks-demo
+```
+
 To create an AWS storage class for your Amazon EKS cluster
 
 1. Create the storage class
