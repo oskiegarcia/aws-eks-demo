@@ -14,37 +14,37 @@ cd aws-eks-demo
 
 1. Create PVC for mongoDB (using gp2 storage class)
  
-Verify that the storage class is set as default:
-```sh
-kubectl get storageclass
-```
+ - Verify that the storage class is set as default:
+  ```sh
+  kubectl get storageclass
+  ```
 
-```sh
-kubectl create -f volume-pvc.yaml
-```
+ - Create the PVC
+  ```sh
+  kubectl create -f volume-pvc.yaml
+  ```
 
-Verify created pvc: 
+ - Verify created pvc: 
+  ```sh
+  kubectl get pv
+  ```
 
-```sh
-kubectl get pv
-```
-
-2. create mongoDB
+2. Create mongoDB
 ```sh
 kubectl apply -f mongo-stack.yaml
 ```
 
-3. apply services
+3. Apply services
 ```sh
 kubectl apply -f services.yaml
 ```
 
-4. apply workloads
+4. Apply workloads
 ```sh
 kubectl apply -f workloads.yaml
 ```
 
-5. verify that pods are runnning
+5. Verify that pods are runnning
 ```sh
 kubectl get all
 ```
