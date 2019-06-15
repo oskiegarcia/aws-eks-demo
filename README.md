@@ -139,7 +139,7 @@ At the moment, Cloud9 is only available in the following regions:
 
   - create the cluster (takes 15 mins)
   ```sh
-  eksctl create cluster --region ${AWS_REGION} --name eks-workshop-eksctl --nodes=3
+  eksctl create cluster --region ${AWS_REGION} --name eks-workshop-eksctl --nodes=3 --ssh-public-key=eksworkshop
   ```
   
   - verify
@@ -181,3 +181,13 @@ cat ~/.bash_profile
 ```sh
 kubectl version
 ```
+
+
+
+###  DELETE THE EKSCTL CLUSTER
+Delete the cluster when you no longer needs it for this workshop
+
+```sh
+eksctl delete cluster --name=eks-workshop-eksctl
+```
+
