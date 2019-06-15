@@ -1,7 +1,7 @@
 
 # Pesistent volume in EBS with gp2 storage class
 
-prerequisite:
+Prerequisite:
 ```sh
 cd ~/environment
 git clone https://github.com/oskiegarcia/aws-eks-demo.git

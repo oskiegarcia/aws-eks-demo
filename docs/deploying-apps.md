@@ -1,6 +1,12 @@
 
 # Deploying the Fleetman application
 
+Prerequisite:
+```sh
+cd ~/environment
+git clone https://github.com/oskiegarcia/aws-eks-demo.git
+cd aws-eks-demo
+```
 
 1. apply services
 ```sh
