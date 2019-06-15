@@ -126,7 +126,8 @@ At the moment, Cloud9 is only available in the following regions:
    sudo mv -v /tmp/eksctl /usr/local/bin
    ```
 
-   - Get version eksctl
+   - Get eksctl version
+   
     ```sh
      eksctl version
     ```
