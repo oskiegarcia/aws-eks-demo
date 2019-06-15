@@ -188,7 +188,7 @@ kubectl version
 
 
 ###  DELETE THE EKSCTL CLUSTER
-Delete the cluster when you no longer needs it for this workshop
+Delete the cluster when you no longer need it for this workshop
 
 ```sh
 eksctl delete cluster --name=eks-workshop-eksctl
