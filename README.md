@@ -150,9 +150,13 @@ At the moment, Cloud9 is only available in the following regions:
   eksctl get clusters
   ```
   
+  - get nodegroup
+  ```sh
+  eksctl get nodegroup --cluster=eks-workshop-eksctl
+
   - scale
   ```sh
-  eksctl scale nodegroup --name eks-workshop-eksctl  --nodes=4 --region=${AWS_REGION}
+  eksctl scale nodegroup --cluster=eks-workshop-eksctl  --nodes=4 --name=<NODEGROUP name>
   ```
 
 
@@ -186,11 +190,4 @@ kubectl version
 ```
 
 
-
-###  DELETE THE EKSCTL CLUSTER
-Delete the cluster when you no longer need it for this workshop
-
-```sh
-eksctl delete cluster --name=eks-workshop-eksctl
-```
 
