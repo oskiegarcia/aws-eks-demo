@@ -34,5 +34,10 @@ To create the PVC using the gp2 storage class
 kubectl create -f volume-pvc.yaml
 ```
 
+To verify created pvc 
+
+```sh
+kubectl get pv
+```
 
 
