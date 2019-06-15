@@ -30,7 +30,7 @@ At the moment, Cloud9 is only available in the following regions:
 ## 1. AWS Environment setup
  - AWS user/roles setup 
  - Cloud9 setup
-   * Why Cloud9? It has aws cli, golang, git, and other softwares pre-installed
+   * Why Cloud9? It has AWS cli, golang, git, docker, and other softwares pre-installed
    * create workspace
    * create an IAM role (eksworkshop-admin, assign AdministratorAcccess) for your workspace
    * attach the IAM role for your workspace 
