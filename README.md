@@ -135,6 +135,9 @@ At the moment, Cloud9 is only available in the following regions:
      eksctl version
    ```
 
+   Note:
+   If you want to learn more about eksctl, go to https://github.com/weaveworks/eksctl
+   
 ## 2. Launch EKSCTL
 
   - create the cluster (takes 15 mins)
