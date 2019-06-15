@@ -128,9 +128,9 @@ At the moment, Cloud9 is only available in the following regions:
 
    - Get eksctl version
    
-    ```sh
+   ```sh
      eksctl version
-    ```
+   ```
 
 ## 2. Launch EKSCTL
 
