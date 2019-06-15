@@ -11,9 +11,9 @@ spec:
     app: webapp
 
   ports:
-    - name: http
+    - protocol: TCP
       port: 80
-      targetPort: 30080
+      targetPort: 80
 
   type: LoadBalancer
 ---
@@ -30,9 +30,9 @@ spec:
     app: queue
 
   ports:
-    - name: http
+    - protocol: TCP
       port: 8161
-      targetPort: 30010
+      targetPort: 8161
 
     - name: endpoint
       port: 61616
@@ -72,8 +72,8 @@ spec:
     app: api-gateway
 
   ports:
-    - name: http
+    - protocol: TCP
       port: 8080
-      targetPort: 30020
+      targetPort: 8080
 
   type: LoadBalancer
