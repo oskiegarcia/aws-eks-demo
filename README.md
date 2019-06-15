@@ -52,6 +52,9 @@ At the moment, Cloud9 is only available in the following regions:
       ```
 
    3. Install AWS IAM Authenticator
+   
+      Amazon EKS uses IAM to provide authentication to your Kubernetes cluster through AWS IAM Authenticator.
+   
       ```sh
 	  go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
       sudo mv ~/go/bin/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
