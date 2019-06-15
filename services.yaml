@@ -11,7 +11,7 @@ spec:
     app: webapp
 
   ports:
-    - protocol: TCP
+    - name: http
       port: 80
       targetPort: 80
 
@@ -30,7 +30,7 @@ spec:
     app: queue
 
   ports:
-    - protocol: TCP
+    - name: http
       port: 8161
       targetPort: 8161
 
@@ -72,7 +72,7 @@ spec:
     app: api-gateway
 
   ports:
-    - protocol: TCP
+    - name: http
       port: 8080
       targetPort: 8080
 
