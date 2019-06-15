@@ -150,12 +150,10 @@ At the moment, Cloud9 is only available in the following regions:
   eksctl get clusters
   ```
   
-  - get nodegroup
+  - get nodegroup and scale the nodegroup
   ```sh
   eksctl get nodegroup --cluster=eks-workshop-eksctl
 
-  - scale
-  ```sh
   eksctl scale nodegroup --cluster=eks-workshop-eksctl  --nodes=4 --name=<NODEGROUP name>
   ```
 
