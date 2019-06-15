@@ -35,16 +35,3 @@ kubectl get storageclass
 
 
 
-To create the PVC using the gp2 storage class
-
-```sh
-kubectl create -f volume-pvc.yaml
-```
-
-To verify created pvc 
-
-```sh
-kubectl get pv
-```
-
-

@@ -2,23 +2,49 @@
 # Deploying the Fleetman application
 
 Prerequisite:
+- Get yaml configs from github
 ```sh
 cd ~/environment
 git clone https://github.com/oskiegarcia/aws-eks-demo.git
 cd aws-eks-demo
 ```
 
-1. apply services
+
+### Steps
+
+1. Create PVC for mongoDB (using gp2 storage class)
+ 
+Verify that the storage class is set as default:
+```sh
+kubectl get storageclass
+```
+
+```sh
+kubectl create -f volume-pvc.yaml
+```
+
+Verify created pvc: 
+
+```sh
+kubectl get pv
+```
+
+2. create mongoDB
+```sh
+kubectl apply -f mongo-stack.yaml
+```
+
+3. apply services
 ```sh
 kubectl apply -f services.yaml
 ```
 
-2. apply workloads
+4. apply workloads
 ```sh
 kubectl apply -f workloads.yaml
 ```
 
-3. verify that pods are runnning
+5. verify that pods are runnning
 ```sh
 kubectl get all
 ```
