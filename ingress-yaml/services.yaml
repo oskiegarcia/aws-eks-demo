@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fleetman-webapp
+  labels:
+    name: webapp
 
 spec:
   # This defines which pods are going to be represented by this Service
@@ -20,6 +22,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fleetman-queue
+  labels:
+    name: queue
 
 spec:
   # This defines which pods are going to be represented by this Service
@@ -42,6 +46,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fleetman-position-tracker
+  labels:
+    name: position-tracker
 
 spec:
   # This defines which pods are going to be represented by this Service
@@ -61,6 +67,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fleetman-api-gateway
+  labels:
+    name: api-gateway
 
 spec:
   # This defines which pods are going to be represented by this Service
