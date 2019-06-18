@@ -6,14 +6,14 @@ metadata:
     kubernetes.io/ingress.class: "nginx-ingress"   # Using this annotation you can select the ingress controller 
 spec:
   rules:
-    - host: myfleetman.com
+    - host: fleetman.com
       http:
         paths:
           - path: /
             backend:
               serviceName: webapp
               servicePort: 80
-    - host: queue.myfleetman.com
+    - host: queue.fleetman.com
       http:
         paths:
           - path: /
