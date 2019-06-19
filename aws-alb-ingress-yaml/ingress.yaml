@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: fleetman-ingress
@@ -10,9 +10,9 @@ spec:
       paths:
           - path: /
             backend:
-              serviceName: webapp
+              serviceName: fleetman-webapp
               servicePort: 80
           - path: /queue
             backend:
-              serviceName: queue
+              serviceName: fleetman-queue
               servicePort: 8161
