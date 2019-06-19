@@ -5,15 +5,16 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+    ingress.kubernetes.io/rewrite-target: /activemq
 spec:
   rules:
   - http:
       paths:
-          - path: /
-            backend:
-              serviceName: fleetman-webapp
-              servicePort: 80
-          - path: /queue
+          - path: /activemq/*
             backend:
               serviceName: fleetman-queue
               servicePort: 8161
+          - path: /*
+            backend:
+              serviceName: fleetman-webapp
+              servicePort: 80

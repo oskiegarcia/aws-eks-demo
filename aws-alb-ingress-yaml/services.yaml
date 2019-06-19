@@ -13,7 +13,7 @@ spec:
   ports:
     - name: http
       port: 80
-      protocol: TCP
+      targetPort: 80
 
   type: NodePort
 ---
@@ -32,7 +32,7 @@ spec:
   ports:
     - name: http
       port: 8161
-      protocol: TCP
+      targetPort: 8161
 
     - name: endpoint
       port: 61616
@@ -74,5 +74,6 @@ spec:
   ports:
     - name: http
       port: 8080
+      targetPort: 8080
 
-  type: ClusterIP
+  type: NodePort
