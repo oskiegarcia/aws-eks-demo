@@ -13,8 +13,9 @@ spec:
   ports:
     - name: http
       port: 80
+      protocol: TCP
 
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -31,11 +32,12 @@ spec:
   ports:
     - name: http
       port: 8161
+      protocol: TCP
 
     - name: endpoint
       port: 61616
 
-  type: ClusterIP
+  type: NodePort
 
 ---
 apiVersion: v1
