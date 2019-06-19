@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: fleetman-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /  
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   rules:
   - http:
