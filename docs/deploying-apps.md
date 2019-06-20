@@ -49,6 +49,12 @@ kubectl apply -f workloads.yaml
 kubectl get all
 ```
 
+6. Verify that apps are accessible through  load balancers
+```
+ http://<DNS of webapp>
+ http://<DNS of activemq>
+ http://<DNS of api gateway>
+```
 
 
 

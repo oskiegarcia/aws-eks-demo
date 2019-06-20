@@ -1,20 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-virtual-host
+  name: fleetman-ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 spec:
   rules:
-    - host: fleetman.com
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: webapp
-              servicePort: 80
-    - host: queue.fleetman.com
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: queue
-              servicePort: 8161
+  - http:
+      paths:
+      - path: /queue(/|$)(.*)
+        backend:
+          serviceName: fleetman-queue
+          servicePort: 8161
+      - path: /
+        backend:
+          serviceName: fleetman-webapp
+          servicePort: 80
